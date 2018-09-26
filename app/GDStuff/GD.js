@@ -17,9 +17,7 @@ class getLevel{
         if (!coins) coins = '0';
         if (!epic) epic = '0';
         if (!star) star = '0';
-        
-        console.log(str)
-        
+
         let prom = new Promise((res, rej) => {
             request.post({
                 url: `${database}/getGJLevels21.php`,
@@ -106,8 +104,6 @@ class getLevel{
                                     break;
                             }
                         }
-
-                        console.log(lvlData);
                         
                         const lengtharr = [
 							"Tiny",
@@ -146,12 +142,10 @@ class getLevel{
                         }
                         
                         let songs = b.split("#")[2].split(":");
-                        console.log(songs);
-                        console.log(lvlData[47])
-						if(lvlData[47] != "0") {
+						if(lvlData[53] != "0") {
 							for(let s in songs) {
-								if(songs[s].split("~|~")[8] == lvlData[47]) {
-									let song = songs[s].split("~|~");
+								if(songs[s].split("~|~")[1] == lvlData[53]) {
+                                    let song = songs[s].split("~|~");
 									parsedData.song = {
 										name: song[3],
 										author: song[7],
@@ -159,7 +153,6 @@ class getLevel{
 										size: song[9] + "MB",
 										url: decodeURIComponent( song[13] )
                                     }
-                                    console.log(song)
 								}
 							}
 						} else {
